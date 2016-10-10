@@ -29,9 +29,9 @@ if __name__ == "__main__":
         my_string = my_string + line[0]
         for tag in line[1]:
             if line[1][tag] != '':
-                my_string = my_string + '\t' + tag +'=' + '"'+line[1][tag] + '"'
-            
+                my_string = my_string + '\t' + tag + '=' + '"' + line[1][tag] + '"'
+
     print(my_string)
     cadena = sys.argv[1]
-    fichero_nombre = cadena.split(".")[0]+".json"
-    json.dump(data,open(fichero_nombre,'w'))
+    fichero_nombre = cadena.split(".")[0] + ".json"
+    json.dump(data, open(fichero_nombre, 'w'))
