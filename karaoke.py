@@ -30,8 +30,12 @@ if __name__ == "__main__":
         for tag in line[1]:
             if line[1][tag] != '':
                 my_string = my_string + '\t' + tag + '=' + '"' + line[1][tag] + '"'
-
+            if tag == 'src':
+                if line[1][tag].startswith('http://'):
+                    scrap = line[1][tag].split('/')[-1]
+                    urllib.request.urlretrieve(line[1][tag], scrap)
+                    line[1][tag] = scrap
     print(my_string)
     cadena = sys.argv[1]
     fichero_nombre = cadena.split(".")[0] + ".json"
-    json.dump(data, open(fichero_nombre, 'w'))
+    json.dump(data, open(fichero_nombre, 'w'), sort_keys=True, indent=4, separators=(',', ': '))
